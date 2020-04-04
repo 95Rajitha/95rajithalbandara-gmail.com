@@ -1,0 +1,31 @@
+when you add a spring security dependency spring security creates a default user
+
+in this practical we are going to configure the authentication by hardcoding the users by saving
+in the memory.
+
+way to  configure the authentication in spring security by affecting the Authentication Manger
+
+Authentication manager has a method called authenticate() it either returns a succesfull authentication or
+throws an exception
+
+Using a builder pattern we can make configure the authentication manager authentication manager builder is used
+for that we use an authenticationManagerBuilder
+        there are two steps of this
+            1> get hold with the authenticationManagerBuilder
+            2> set the configuration on it.
+   EX:  type of the authentication >>> Memoru authentication
+           then username password and the role are requested
+
+       once you configured witht the above properties a new Authentication Manger is created with
+       values wanted
+       we are not directly dealing with the authentication manager we only deals with the Auth.Manage.Builder
+
+How to start with the first step as the above???
+    by leveraging a hook available in the spring security app
+    there is a class which has the method "configure(authenticationManagerBuilder)"
+    and this has the default methods in use
+    we have to extend the above class and override the configure method which has
+
+    for that>>>>
+        go to application.properties and remove all the things in that...since we are not overriding the single default user that has created by the spring security
+        Create a class in any name here as SecurityConfiguration and extend the class WebSecurityConfigurerAdapter to override configure method.
